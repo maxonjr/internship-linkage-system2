@@ -1,0 +1,172 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .internships-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 40px 0;
+  }
+
+  .internship-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .internship-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .internship-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+
+  .internship-meta {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .internship-description,
+  .internship-requirements {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #444;
+  }
+
+  .internship-requirements ul {
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+
+  .internship-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+
+  .primary-action {
+    background-color: #3498db;
+    color: white;
+  }
+
+  .primary-action:hover {
+    background-color: #2980b9;
+  }
+
+  .secondary-action {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+  }
+
+  .secondary-action:hover {
+    background-color: #dce3e6;
+  }
+</style>
+<header>
+        <div class="container">
+            <h1 class="logo">RWANDA INTERNSHIP LINKAGE SYSYTEM</h1>
+
+        </div>
+    </header>
+    <!-- Same header as dashboard.html -->
+    
+    <main class="container">
+        <div class="dashboard">
+            <!-- Same sidebar as dashboard.html -->
+            
+            <!-- Main Content -->
+
+                    <div class="internships-list">
+                        <!-- Internship 1 -->
+                        <div class="internship-card">
+                            <h3>Frontend Developer Intern</h3>
+                            <div class="internship-meta">
+                                <span><i class="fas fa-building"></i> TechSolutions Inc.</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</span>
+                                <span><i class="fas fa-clock"></i> 3 months</span>
+                                <span><i class="fas fa-calendar-alt"></i> Deadline: May 30, 2023</span>
+                            </div>
+                            <div class="internship-description">
+                                <p>We're looking for a talented Frontend Developer intern to join our team. You'll work with modern frameworks like React and Vue.js to build user interfaces for our clients.</p>
+                            </div>
+                            <div class="internship-requirements">
+                                <h4>Requirements:</h4>
+                                <ul>
+                                    <li>Basic knowledge of HTML, CSS, and JavaScript</li>
+                                    <li>Familiarity with React or similar frameworks</li>
+                                    <li>Portfolio or sample projects</li>
+                                    <li>Currently enrolled in a Computer Science program</li>
+                                </ul>
+                            </div>
+                            <div class="internship-actions">
+                                <a href="frontend-developer.html" class="action-btn primary-action">Apply Now</a>
+                                <a href="#" class="action-btn secondary-action">Save</a>
+                                <a href="frontend-developer.html" class="action-btn secondary-action">View Details</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Internship 2 -->
+                        <div class="internship-card">
+                            <h3>UX Design Intern</h3>
+                            <div class="internship-meta">
+                                <span><i class="fas fa-building"></i> Digital Creations</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                                <span><i class="fas fa-clock"></i> 6 months</span>
+                                <span><i class="fas fa-calendar-alt"></i> Deadline: Jun 15, 2023</span>
+                            </div>
+                            <div class="internship-description">
+                                <p>Join our design team to create beautiful, user-friendly interfaces for web and mobile applications. This is a great opportunity to build your portfolio with real-world projects.</p>
+                            </div>
+                            <div class="internship-requirements">
+                                <h4>Requirements:</h4>
+                                <ul>
+                                    <li>Understanding of UX principles</li>
+                                    <li>Familiarity with Figma or Adobe XD</li>
+                                    <li>Creative problem-solving skills</li>
+                                    <li>Design portfolio preferred</li>
+                                </ul>
+                            </div>
+                            <div class="internship-actions">
+                                <a href="ux-intern.html" class="action-btn primary-action">Apply Now</a>
+                                <a href="#" class="action-btn secondary-action">Save</a>
+                                <a href="ux-intern.html" class="action-btn secondary-action">View Details</a>
+                            </div>
+                        </div>
+                        
+                        <!-- More internship cards would go here -->
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </main>
+    

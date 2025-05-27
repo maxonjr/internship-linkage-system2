@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Details | Internship Center</title>
+    <style>
+        /* Reuse all the styles from dashboard.html */
+        /* Additional styles for internship details */
+        .internship-header {
+            margin-bottom: 30px;
+        }
+		    body {
+			background-color:skyblue;
+			background-size: cover;
+			background-repeat: no-repeat;
+			backgroun-position: centre;
+			font-family: 'Verdana', sans-serif;
+			font-style:italic;
+			}
+        
+        .internship-header h2 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+          a {
+           display: inline-block;
+           padding: 10px 5px;
+           background-color: green;  /* Button background */
+           color: white;               /* Text color */
+           text-decoration: none;      /* Remove underline */
+           border-radius: 3px;         /* Rounded corners */
+           transition: background 0.3s ease;
+        }
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .internship-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #64748b;
+        }
+		        footer {
+            background-color: darkblue;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .internship-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+			color:darkblue;
+        }
+        
+        .internship-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .internship-description {
+            line-height: 1.8;
+        }
+        
+        .internship-description h3 {
+            margin: 20px 0 10px;
+            color: #1e293b;
+        }
+        
+        .internship-sidebar {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-section h3 {
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+		
+        
+        .application-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .application-deadline {
+            color: #ef4444;
+            font-weight: 600;
+        }
+		application-actions{
+}
+        header{
+		background-color:;
+		color: darkblue;
+		}
+        
+        .similar-internships {
+            margin-top: 40px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+ <header>
+        <div class="container">
+            <h1 class="logo">RWANDA INTERNSHIP LINKAGE SYSYTEM</h1>
+
+        </div>
+    </header>
+    <!-- Same header as dashboard.html -->
+    
+    <main class="container">
+        <div class="dashboard">
+            <!-- Same sidebar as dashboard.html -->
+            
+            <!-- Main Content -->
+            <div class="main-content">
+                <section class="internship-details">
+                    <div class="internship-header">
+                        <h2>Web Developer Intern</h2>
+                        <div class="company-info">
+                            <img src="https://via.placeholder.com/60" alt="Tecbie Ltd" class="company-logo">
+                            <div>
+                                <h3>Tecbie Ltd</h3>
+                                <p>Technology Company</p>
+                            </div>
+                        </div>
+                        
+                        <div class="internship-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</span>
+                            <span><i class="fas fa-clock"></i> 3 months</span>
+                            <span><i class="fas fa-calendar-alt"></i> Start Date: June 2023</span>
+                            <span><i class="fas fa-money-bill-wave"></i> $500/month stipend</span>
+                        </div>
+                    </div>
+                    
+                    <div class="internship-content">
+                        <div class="internship-description">
+                            <h3>About the Internship</h3>
+                            <p>We're looking for a talented Web Developer intern to join our team. You'll work on real projects, building and maintaining websites and web applications for our clients. This is a great opportunity to gain hands-on experience in a professional environment.</p>
+                            
+                            <h3>Responsibilities</h3>
+                            <ul>
+                                <li>Develop and maintain responsive websites using HTML, CSS, and JavaScript</li>
+                                <li>Collaborate with designers to implement UI/UX designs</li>
+                                <li>Write clean, maintainable code following best practices</li>
+                                <li>Participate in code reviews and team meetings</li>
+                                <li>Troubleshoot and debug issues</li>
+                            </ul>
+                            
+                            <h3>Requirements</h3>
+                            <ul>
+                                <li>Currently pursuing a degree in Computer Science or related field</li>
+                                <li>Basic knowledge of HTML, CSS, and JavaScript</li>
+                                <li>Familiarity with version control (Git)</li>
+                                <li>Understanding of responsive design principles</li>
+                                <li>Strong problem-solving skills</li>
+                            </ul>
+                            
+                            <h3>Nice to Have</h3>
+                            <ul>
+                                <li>Experience with React or similar frameworks</li>
+                                <li>Knowledge of backend technologies (Node.js, PHP)</li>
+                                <li>Previous internship or project experience</li>
+                            </ul>
+                            
+                            <h3>What We Offer</h3>
+                            <ul>
+                                <li>Hands-on experience with real projects</li>
+                                <li>Mentorship from experienced developers</li>
+                                <li>Flexible work hours</li>
+                                <li>Potential for full-time employment after graduation</li>
+                                <li>Stipend to cover living expenses</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="internship-sidebar">
+                            <div class="sidebar-section">
+                                <h3>About Tecbie Ltd</h3>
+                                <p>Tecbie is a leading technology company in Rwanda, specializing in web and mobile application development. We work with clients across Africa to build innovative digital solutions.</p>
+                            </div>
+                            
+                            <div class="sidebar-section">
+                                <h3>Company Details</h3>
+                                <p><strong>Size:</strong> 50-100 employees</p>
+                                <p><strong>Industry:</strong> Information Technology</p>
+                                <p><strong>Founded:</strong> 2015</p>
+                                <p><strong>Website:</strong> <a href="#">www.tecbie.rw</a></p>
+                            </div>
+                            
+                            <div class="application-box">
+                                <h3>Apply for this Internship</h3>
+                                <p class="application-deadline"><i class="fas fa-exclamation-circle"></i> Application deadline: May 30, 2023</p>
+                                
+                                <div class="application-actions" style="margin-top: 20px;">
+                                    <a href="#" class="action-btn primary-action" style="display: block; text-align: center; margin-bottom: 10px;">Apply Now</a>
+                                    <a href="#" class="action-btn secondary-action" style="display: block; text-align: center;">Save for Later</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="similar-internships">
+                        <div class="section-header">
+                            <h2>Similar Internships</h2>
+                        </div>
+                        
+                        <div class="applications-grid">
+                            <!-- Similar internship cards -->
+                            <div class="application-card">
+                                <h3>Frontend Developer</h3>
+                                <div class="application-meta">
+                                    <span>TechSolutions Inc.</span>
+                                    <span>Kigali</span>
+                                </div>
+                                <div class="application-meta">
+                                    <span>3 months</span>
+                                    <span>Deadline: May 30</span>
+                                </div>
+                                <div class="application-actions">
+                                    <a href="frontend-developer.html" class="action-btn primary-action">Apply Now</a>
+                                    <a href="#" class="action-btn secondary-action">Save</a>
+                                </div>
+                            </div>
+                            
+                            <div class="application-card">
+                                <h3>Full Stack Developer</h3>
+                                <div class="application-meta">
+                                    <span>DevHub Africa</span>
+                                    <span>Remote</span>
+                                </div>
+                                <div class="application-meta">
+                                    <span>6 months</span>
+                                    <span>Deadline: Jun 10</span>
+                                </div>
+                                <div class="application-actions">
+                                    <a href="fullstack-developer.html" class="action-btn primary-action">Apply Now</a>
+                                    <a href="#" class="action-btn secondary-action">Save</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+       <footer>
+           <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>InternshipCenter</h3>
+                    <p>Connecting students with top companies to launch careers.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="all-internships.html">Internships</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>For Employers</h3>
+                    <ul>
+                        <li><a href="post-internship.html">Post Internship</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="employer-dashboard.html">Employer Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 InternshipCenter. All rights reserved.</p>
+            </div>
+        </div>
+		</footer>
+</body>
+</html>

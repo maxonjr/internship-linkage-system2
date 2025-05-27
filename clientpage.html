@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Internship Center</title>
+    <style>
+        /* Reused Header/Footer Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+       
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+			background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            margin: 0;
+			font-family: 'Verdana', sans-serif;
+			font-style:italic;
+			  margin-top: 40px;
+             margin-right: 20px;
+            margin-bottom: 40px;
+            margin-left: 20px;
+        }
+                @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+			}
+        .container {
+			color:green;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        header {
+            background: darkblue;
+			color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        
+        /* Dashboard-Specific Styles */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+        
+        .profile-card {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid #2563eb;
+        }
+        
+        .profile-card h3 {
+            margin-bottom: 5px;
+        }
+        
+        .profile-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            background: #e0e7ff;
+            color: #2563eb;
+        }
+        
+        .nav-menu i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .main-content {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .section-header h2 {
+            color: #1e293b;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .application-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .application-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.1);
+        }
+        
+        .application-card h3 {
+            margin-bottom: 10px;
+            color: #2563eb;
+        }
+        
+        .application-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .application-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: #fef9c3;
+            color: #b45309;
+        }
+        
+        .status-accepted {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .application-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .primary-action {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .secondary-action {
+            border: 1px solid #2563eb;
+            color: #2563eb;
+        }
+        
+        .recommendations {
+            margin-top: 40px;
+        }
+        
+        /* Footer (reused from index) */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: 2;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header (Logged-in Version) -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">InternshipCenter</a>
+                <div>
+                    <a href="profile.html" id="userProfileLink" style="margin-right: 15px; color: #2563eb; text-decoration: none; font-weight: 600;">
+                        <i class="fas fa-user-circle"></i> <span id="usernameDisplay"></span>
+                    </a>
+                    <a href="#" id="logoutBtn" class="btn" style="background: #f1f5f9; color: #64748b;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Dashboard Content -->
+    <main class="container">
+        <div class="dashboard">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <div class="profile-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-pic" id="userProfilePic">
+                    <h3 id="userFullName">John Doe</h3>
+                    <p id="userMajor">Computer Science Student</p>
+                    <p id="userUniversity">University of Rwanda</p>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                    <li><a href="applications.html"><i class="fas fa-file-alt"></i> Applications</a></li>
+                    <li><a href="saved-internships.html"><i class="fas fa-bookmark"></i> Saved Internships</a></li>
+                    <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <section class="applications">
+                    <div class="section-header">
+                        <h2>Recent Applications</h2>
+                        <a href="all-internships.html" class="btn">Find More Internships</a>
+                    </div>
+                    
+                    <div class="applications-grid">
+                        <!-- Application 1 -->
+                        <div class="application-card">
+                            <h3>Web Developer</h3>view details
+                            <div class="application-meta">
+                                <span>Tecbie Ltd</span>
+                                <span>Applied: 2 days ago</span>
+                            </div>
+                            <div>
+                                <span class="application-status status-pending">Pending Review</span>
+                            </div>
+                            <div class="application-actions">
+                                <a href="details.html" class="action-btn primary-action">View Details</a>
+                                <a href="#" class="action-btn secondary-action">Withdraw</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Application 2 -->
+                        <div class="application-card">
+                            <h3>Data Analyst</h3>
+                            <div class="application-meta">
+                                <span>InsightLab</span>
+                                <span>Applied: 1 week ago</span>
+                            </div>
+                            <div>
+                                <span class="application-status status-accepted">Interview Scheduled</span>
+                            </div>
+                            <div class="application-actions">
+                                <a href="data-analyst.html" class="action-btn primary-action">View Details</a>
+                                <a href="messages.html" class="action-btn secondary-action">Message</a>
+					
+                            </div>
+                        </div>
+                        
+                        <!-- Application 3 -->
+                        <div class="application-card">
+                            <h3>Marketing Intern</h3>
+                            <div class="application-meta">
+                                <span>Cresliva</span>
+                                <span>Applied: 3 weeks ago</span>
+                            </div>
+                            <div>
+                                <span class="application-status status-rejected">Not Selected</span>
+                            </div>
+                            <div class="application-actions">
+                                <a href="marketing.html" class="action-btn primary-action">View Details</a>
+                                <a href="feedback.html" class="action-btn secondary-action">Get Feedback</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="recommendations">
+                    <div class="section-header">
+                        <h2>Recommended For You</h2>
+                        <a href="all-internships.html" class="btn">See All</a>
+                    </div>
+                    
+                    <div class="applications-grid">
+                        <!-- Recommendation 1 -->
+                        <div class="application-card">
+                            <h3>Frontend Developer</h3>
+                            <div class="application-meta">
+                                <span>TechSolutions Inc.</span>
+                                <span>Kigali</span>
+                            </div>
+                            <div class="application-meta">
+                                <span>3 months</span>
+                                <span>Deadline: May 30</span>
+                            </div>
+                            <div class="application-actions">
+                                <a href="apply.html" class="action-btn primary-action">Apply Now</a>
+                                <a href="#" class="action-btn secondary-action">Save</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Recommendation 2 -->
+                        <div class="application-card">
+                            <h3>UX Design Intern</h3>
+                            <div class="application-meta">
+                                <span>Digital Creations</span>
+                                <span>Remote</span>
+                            </div>
+                            <div class="application-meta">
+                                <span>6 months</span>
+                                <span>Deadline: Jun 15</span>
+                            </div>
+                            <div class="application-actions">
+                                <a href="apply.html" class="action-btn primary-action">Apply Now</a>
+                                <a href="#" class="action-btn secondary-action">Save</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer (Same as Index) -->
+    <footer>
+
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="all-internships.html">Internships</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+           
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 InternshipCenter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Display logged in user's information
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const loggedIn = sessionStorage.getItem('loggedIn');
+            const username = sessionStorage.getItem('username') || 'User';
+            const email = sessionStorage.getItem('email') || '';
+            
+            if (loggedIn !== 'true') {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update all user information displays
+            document.getElementById('usernameDisplay').textContent = username;
+            document.getElementById('userFullName').textContent = username;
+            
+            // Set profile picture based on username (demo purposes)
+            const profilePic = document.getElementById('userProfilePic');
+            const nameHash = username.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+            const gender = nameHash % 2 === 0 ? 'women' : 'men';
+            profilePic.src = '1.jpeg';
+            
+            // Demo user data based on username
+            if (username.toLowerCase().includes('john')) {
+                document.getElementById('userMajor').textContent = 'Computer Science Student';
+                document.getElementById('userUniversity').textContent = 'University of Rwanda';
+            } else if (username.toLowerCase().includes('mary')) {
+                document.getElementById('userMajor').textContent = 'Business Administration';
+                document.getElementById('userUniversity').textContent = 'Kigali Institute of Technology';
+            } else {
+                document.getElementById('userMajor').textContent = 'Engineering Student';
+                document.getElementById('userUniversity').textContent = 'African Leadership University';
+            }
+            
+            // Logout functionality
+            document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                sessionStorage.clear();
+                window.location.href = 'login.html';
+            });
+            
+            // Update profile link
+            document.getElementById('userProfileLink').href = `profile.html?user=${encodeURIComponent(username)}`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Internships | Internship Center</title>
+    <style>
+        /* Reuse all the styles from dashboard.html */
+        /* Additional styles for internship details */
+        .internship-header {
+            margin-bottom: 30px;
+        }
+		    body {
+			background-color:skyblue;
+			background-size: cover;
+			background-repeat: no-repeat;
+			backgroun-position: centre;
+			font-family: 'Verdana', sans-serif;
+			font-style:italic;
+			}
+        
+        .internship-header h2 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+          a {
+           display: inline-block;
+           padding: 10px 5px;
+           background-color: green;  /* Button background */
+           color: white;               /* Text color */
+           text-decoration: none;      /* Remove underline */
+           border-radius: 3px;         /* Rounded corners */
+           transition: background 0.3s ease;
+        }
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+		internship-card{
+         background-color: #fff;
+         border-radius: 12px;
+         padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+		.internship-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+		.internship-card h3 {
+        margin-top: 0;
+        color: #2c3e50;
+        }
+
+        
+        .internship-meta {
+         font-size: 14px;
+         color: #7f8c8d;
+         margin: 10px 0;
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+
+        }
+		
+    		footer {
+            background-color: darkblue;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .internship-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+			color:darkblue;
+        }
+		.container {
+         width: 90%;
+         max-width: 1200px;
+         margin: auto;
+        }
+	    .internships-list {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+         gap: 20px;
+         padding: 40px 0;
+        }	
+        
+        .internship-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .internship-description {
+            line-height: 1.8;
+        }
+        
+        .internship-description h3 {
+            margin: 20px 0 10px;
+            color: #1e293b;
+        }
+        
+        .internship-sidebar {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-section h3 {
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+		
+        
+        .application-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .application-deadline {
+            color: #ef4444;
+            font-weight: 600;
+        }
+		application-actions{
+}
+        header{
+		background-color:;
+		color: darkblue;
+		}
+        
+        .similar-internships {
+            margin-top: 40px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+ <header>
+        <div class="container">
+            <h1 class="logo">RWANDA INTERNSHIP LINKAGE SYSYTEM</h1>
+
+        </div>
+    </header>
+    <!-- Same header as dashboard.html -->
+    
+    <main class="container">
+        <div class="dashboard">
+            <!-- Same sidebar as dashboard.html -->
+            
+            <!-- Main Content -->
+
+                    <div class="internships-list">
+                        <!-- Internship 1 -->
+						<div class="internship-card">
+						<image src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" height="300px" width="300px"/>
+  <h3>Web Developer Intern</h3>
+  
+  <div class="internship-meta">
+    <span><i class="fas fa-building"></i> CodeCrafters Ltd.</span>
+    <span><i class="fas fa-map-marker-alt"></i> Musanze, Rwanda</span>
+    <span><i class="fas fa-clock"></i> 4 months</span>
+    <span><i class="fas fa-calendar-alt"></i> Deadline: Jul 5, 2023</span>
+  </div>
+  <div class="internship-description">
+    <p>Join our development team and help build responsive, high-performance websites using modern technologies like HTML5, CSS3, JavaScript, and backend frameworks.</p>
+  </div>
+  <div class="internship-requirements">
+    <h4>Requirements:</h4>
+    <ul>
+      <li>Strong knowledge of HTML, CSS, and JavaScript</li>
+      <li>Experience with backend (Node.js, PHP, or Django)</li>
+      <li>Responsive design skills</li>
+      <li>Currently enrolled in a Computer Science or Web Development program</li> 
+    </ul>
+  </div>
+  <div class="internship-actions">
+    <a href="apply.html" class="action-btn primary-action">Apply Now</a>
+    <a href="#" class="action-btn secondary-action">Save</a>
+    <a href="web-developer.html" class="action-btn secondary-action">View Details</a>
+  </div>
+</div>
+
+                        <div class="internship-card">
+						<image src="7990040.jpg" height="300px" width="300px"/>
+                            <h3>Frontend Developer Intern</h3>
+                            <div class="internship-meta">
+                                <span><i class="fas fa-building"></i> TechSolutions Inc.</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</span>
+                                <span><i class="fas fa-clock"></i> 3 months</span>
+                                <span><i class="fas fa-calendar-alt"></i> Deadline: May 30, 2023</span>
+                            </div>
+                            <div class="internship-description">
+                                <p>We're looking for a talented Frontend Developer intern to join our team. You'll work with modern frameworks like React and Vue.js to build user interfaces for our clients.</p>
+                            </div>
+                            <div class="internship-requirements">
+                                <h4>Requirements:</h4>
+                                <ul>
+                                    <li>Basic knowledge of HTML, CSS, and JavaScript</li>
+                                    <li>Familiarity with React or similar frameworks</li>
+                                    <li>Portfolio or sample projects</li>
+                                    <li>Currently enrolled in a Computer Science program</li>
+                                </ul>
+                            </div>
+                            <div class="internship-actions">
+                                <a href="frontend-developer.html" class="action-btn primary-action">Apply Now</a>
+                                <a href="#" class="action-btn secondary-action">Save</a>
+                                <a href="frontend-developer.html" class="action-btn secondary-action">View Details</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Internship 2 -->
+                    
+						<div class="internship-card">
+						<image src="8878367.jpg" height="300px" width="300px"/>
+  <h3>UX Design Intern</h3>
+  <div class="internship-meta">
+    <span><i class="fas fa-building"></i> Digital Creations</span>
+    <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+    <span><i class="fas fa-clock"></i> 6 months</span>
+    <span><i class="fas fa-calendar-alt"></i> Deadline: Jun 15, 2023</span>
+  </div>
+  <div class="internship-description">
+    <p>Join our design team to create beautiful, user-friendly interfaces for web and mobile applications.</p>
+  </div>
+  <div class="internship-requirements">
+    <h4>Requirements:</h4>
+    <ul>
+      <li>Understanding of UX principles</li>
+      <li>Familiarity with Figma or Adobe XD</li>
+      <li>Creative problem-solving skills</li>
+      <li>Design portfolio preferred</li>
+    </ul>
+  </div>
+  <div class="internship-actions">
+    <a href="ux-intern.html" class="action-btn primary-action">Apply Now</a>
+    <a href="#" class="action-btn secondary-action">Save</a>
+    <a href="ux-intern.html" class="action-btn secondary-action">View Details</a>
+  </div>
+</div>
+
+
+
+<div class="internship-card">
+<image src="1325192.jpg" height="300px" width="300px"/>
+  <h3>Data Analyst Intern</h3>
+  <div class="internship-meta">
+    <span><i class="fas fa-building"></i> Insight Analytics</span>
+    <span><i class="fas fa-map-marker-alt"></i> Huye, Rwanda</span>
+    <span><i class="fas fa-clock"></i> 4 months</span>
+    <span><i class="fas fa-calendar-alt"></i> Deadline: Jun 5, 2023</span>
+  </div>
+  <div class="internship-description">
+    <p>Analyze datasets to extract insights and assist in developing reports for real-world business decisions.</p>
+  </div>
+  <div class="internship-requirements">
+    <h4>Requirements:</h4>
+    <ul>
+      <li>Knowledge of Excel and SQL</li>
+      <li>Familiarity with Python (Pandas, Matplotlib)</li>
+      <li>Analytical thinking</li>
+      <li>Currently pursuing a degree in Statistics or related field</li>
+    </ul>
+  </div>
+  <div class="internship-actions">
+    <a href="apply.html" class="action-btn primary-action">Apply Now</a>
+    <a href="#" class="action-btn secondary-action">Save</a>
+    <a href="data-analyst.html" class="action-btn secondary-action">View Details</a>
+  </div>
+</div>
+
+<div class="internship-card">
+<image src="1393719.jpg" height="300px" width="300px"/>
+  <h3>Marketing Intern</h3>
+  <div class="internship-meta">
+    <span><i class="fas fa-building"></i> Global Reach Media</span>
+    <span><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</span>
+    <span><i class="fas fa-clock"></i> 2 months</span>
+    <span><i class="fas fa-calendar-alt"></i> Deadline: May 25, 2023</span>
+  </div>
+  <div class="internship-description">
+    <p>Work closely with the marketing team to create campaigns, content, and digital media strategies.</p>
+  </div>
+  <div class="internship-requirements">
+    <h4>Requirements:</h4>
+    <ul>
+      <li>Basic knowledge of social media platforms</li>
+      <li>Creativity and good communication</li>
+      <li>Passion for branding and storytelling</li>
+      <li>Marketing or Communication background</li>
+    </ul>
+  </div>
+  <div class="internship-actions">
+    <a href="marketing-intern.html" class="action-btn primary-action">Apply Now</a>
+    <a href="#" class="action-btn secondary-action">Save</a>
+    <a href="marketing-intern.html" class="action-btn secondary-action">View Details</a>
+  </div>
+</div>
+
+<div class="internship-card">
+<image src="5298261.jpg" height="300px" width="300px"/>
+  <h3>Cybersecurity Intern</h3>
+  <div class="internship-meta">
+    <span><i class="fas fa-building"></i> SecureTech Labs</span>
+    <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+    <span><i class="fas fa-clock"></i> 5 months</span>
+    <span><i class="fas fa-calendar-alt"></i> Deadline: Jul 10, 2023</span>
+  </div>
+  <div class="internship-description">
+    <p>Assist in vulnerability assessments, monitoring, and reporting to help secure enterprise infrastructure.</p>
+  </div>
+  <div class="internship-requirements">
+    <h4>Requirements:</h4>
+    <ul>
+      <li>Knowledge of cybersecurity fundamentals</li>
+      <li>Understanding of firewalls and network security</li>
+      <li>Analytical skills</li>
+      <li>Currently studying Computer Science or IT Security</li>
+    </ul>
+  </div>
+  <div class="internship-actions">
+    <a href="cybersecurity-intern.html" class="action-btn primary-action">Apply Now</a>
+    <a href="#" class="action-btn secondary-action">Save</a>
+    <a href="cybersecurity-intern.html" class="action-btn secondary-action">View Details</a>
+  </div>
+</div>
+
+                        
+                        <!-- More internship cards would go here -->
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </main>
+    
+       <footer>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 InternshipCenter. All rights reserved.</p>
+            </div>
+        </div>
+		</footer>
+</body>
+</html>

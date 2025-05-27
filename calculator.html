@@ -1,0 +1,58 @@
+<html>
+<link rel="stylesheet" href="dec2.css"/>
+<HEADER><h3>CURRENCY CALCULATOR<h3></HEADER>
+<div class="currency-converter-box">
+
+    <h3>Currency Converter</h3>
+    <input type="number" id="amount" placeholder="Enter amount" />
+
+    <select id="fromCurrency">
+      <option value="RWF">Rwanda (RWF)</option>
+      <option value="USD">United States (USD)</option>
+      <option value="EUR">Eurozone (EUR)</option>
+      <option value="INR">India (INR)</option>
+      <option value="KES">Kenya (KES)</option>
+      <option value="UGX">Uganda (UGX)</option>
+    </select>
+
+    <select id="toCurrency">
+      <option value="RWF">Rwanda (RWF)</option>
+      <option value="USD">United States (USD)</option>
+      <option value="EUR">Eurozone (EUR)</option>
+      <option value="INR">India (INR)</option>
+      <option value="KES">Kenya (KES)</option>
+      <option value="UGX">Uganda (UGX)</option>
+    </select>
+
+    <button onclick="convert()">Convert</button>
+
+    <div id="result"></div>
+  </div>
+  
+
+  <script>
+    const exchangeRates = {
+      USD: 1,
+      EUR: 0.93,
+      INR: 83.20,
+      RWF: 1250,
+      KES: 131.50,
+      UGX: 3850
+    };
+
+    function convert() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const from = document.getElementById('fromCurrency').value;
+      const to = document.getElementById('toCurrency').value;
+
+      if (isNaN(amount)) {
+        document.getElementById('result').innerText = "Enter a valid amount.";
+        return;
+      }
+
+      const usdAmount = amount / exchangeRates[from];
+      const converted = usdAmount * exchangeRates[to];
+      document.getElementById('result').innerText =
+        `${amount} ${from} = ${converted.toFixed(2)} ${to}`;
+    }
+  </script>

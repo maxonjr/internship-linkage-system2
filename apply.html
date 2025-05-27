@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply | InternshipCenter</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+	 body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+			background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            margin: 0;
+			font-family: 'Verdana', sans-serif;
+			font-style:italic;
+			}
+			
+        .application-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .application-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .application-header h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .company-name {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .application-details {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+		container
+		{
+		background-color: darkblue:
+		}
+        
+        .submit-btn {
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .application-container {
+                padding: 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">InternshipCenter</h1>
+            <nav>
+                <a href="index.html" class="btn-primary">Back to Home</a>
+                <a href="clientpage.html" class="btn-secondary">My Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="application-container">
+            <div class="application-header">
+                <h2 id="internshipTitle">Web Developer Intern</h2>
+                <span class="company-name" id="companyName">Techs Ltd</span>
+                <div class="application-details">
+                    <span id="internshipLocation">Kigali</span>
+                    <span id="internshipDuration">3 months</span>
+                </div>
+            </div>
+            
+            <form id="applicationForm">
+                <h3>Application Form</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="applicantName">Full Name</label>
+                        <input type="text" id="applicantName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicantEmail">Email</label>
+                        <input type="email" id="applicantEmail" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="applicantPhone">Phone Number</label>
+                        <input type="tel" id="applicantPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicantEducation">Current Education</label>
+                        <input type="text" id="applicantEducation" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="applicantSkills">Relevant Skills</label>
+                   <input type="levelofeducation" id="levelofeducation" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="level of education">Level of education</label>
+                   <input type="levelofeducation" id="levelofeducation" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="applicantResume">Upload Resume/CV</label>
+                    <input type="file" id="applicantResume" accept=".pdf,.doc,.docx" required>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get internship ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const internshipId = urlParams.get('id');
+            
+            // In a real app, you would fetch internship details from a database
+            // For now, we'll use our sample data
+            const internships = [
+                {
+                    id: 1,
+                    title: "Web Developer Intern",
+                    company: "Techs Ltd",
+                    location: "Kigali",
+                    duration: "3 months",
+                    description: "Build responsive websites using modern frameworks like React and Node.js."
+                },
+                {
+                    id: 2,
+                    title: "Marketing Intern",
+                    company: "Creel",
+                    location: "Remote",
+                    duration: "4 months",
+                    description: "Create social media campaigns and analyze digital marketing metrics."
+                }
+            ];
+            
+            // Find the internship
+            const internship = internships.find(i => i.id == internshipId);
+            
+            if (internship) {
+                // Populate the page
+                document.getElementById('internshipTitle').textContent = internship.title;
+                document.getElementById('companyName').textContent = internship.company;
+                document.getElementById('internshipLocation').textContent = internship.location;
+                document.getElementById('internshipDuration').textContent = internship.duration;
+                
+                // Pre-fill user data if available
+                const userName = localStorage.getItem('userName');
+                const userEmail = localStorage.getItem('userEmail');
+                
+                if (userName) document.getElementById('applicantName').value = userName;
+                if (userEmail) document.getElementById('applicantEmail').value = userEmail;
+            }
+            
+            // Handle form submission   
+            const applicationForm = document.getElementById('applicationForm');
+            if (applicationForm) {
+                applicationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // In a real app, you would send this data to a server
+                    alert('Application submitted successfully!');
+                    
+                    // Redirect to dashboard with success message
+                    window.location.href = 'clientpage.html?success=true';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

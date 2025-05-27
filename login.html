@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | InternshipCenter</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            max-width: 500px;
+            margin: 80px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .signup-link a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .error-message {
+            color: #e53e3e;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+ <header>
+        <div class="container">
+            <h1 class="logo">InternshipCenter</h1>
+            <nav>
+                <a href="index.html" class="btn-primary">Back to Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="login-container">
+            <h2>Login to Your Account</h2>
+            <div id="errorMessage" class="error-message">
+                Invalid email or password. Please try again.
+            </div>
+            <div id="successMessage" class="success-message" style="color: #10b981; text-align: center; margin-bottom: 20px; display: none;">
+                Registration successful! Please log in.
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="signup-link">
+                Don't have an account? <a href="signup.html">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check for successful signup
+        if (sessionStorage.getItem('signupSuccess') === 'true') {
+            document.getElementById('successMessage').style.display = 'block';
+            sessionStorage.removeItem('signupSuccess');
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get input values
+            const email = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Hide error message initially
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Check if email exists in registered users
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || []);
+            if (!registeredUsers.includes(email)) {
+                showError('Email not registered');
+                return;
+            }
+            
+            // Get user data
+            const userData = JSON.parse(localStorage.getItem('user_' + email));
+            
+            if (!userData || userData.password !== password) {
+                showError('Invalid email or password');
+                return;
+            }
+            
+            // Store user information in sessionStorage
+            sessionStorage.setItem('loggedIn', 'true');
+            sessionStorage.setItem('username', userData.fullName);
+            sessionStorage.setItem('email', email);
+            sessionStorage.setItem('userType', userData.userType);
+            
+            // Redirect to appropriate dashboard
+            if (userData.userType === 'student') {
+                window.location.href = 'clientpage.html';
+            } else {
+                window.location.href = 'clientpage.html';
+            }
+        });
+        
+        function showError(message) {
+            const errorElement = document.getElementById('errorMessage');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+        
+        // Check if user is already logged in (for demonstration)
+        if (sessionStorage.getItem('loggedIn') === 'true') {
+            const userType = sessionStorage.getItem('userType');
+            if (userType === 'student') {
+                window.location.href = 'clientpage.html';
+            } else {
+                window.location.href = 'clientpage.html';
+            }
+        }
+    </script>
+</body>
+</html>

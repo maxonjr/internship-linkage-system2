@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternshipCenter | Find Your Dream Internship</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+            --danger: #ff3333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+			background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: darkblue;
+			color:white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100
+			
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white);
+        }
+
+        .login-btn {
+            padding: 8px 20px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .employer-btn {
+            padding: 8px 20px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image:url('2675425.jpg');
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: white;
+            color: var(--primary);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Internship Listings - Horizontal Layout */
+        .internship-listings {
+            padding: 60px 0;
+        }
+
+        .internship-listings h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filters select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-width: 200px;
+        }
+
+        .internship-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 25px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .internship-container::-webkit-scrollbar {
+            height: 8px;
+        }blue
+
+        .internship-container::-webkit-scrollbar-track {
+            background-image: url('image.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .internship-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .internship-card {
+            flex: 0 0 300px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .internship-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .internship-img {
+            height: 160px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .internship-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+
+        .company-logo {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .company-logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .internship-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;jpeg
+        }
+
+        .internship-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .company {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .details {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #f5f7fa;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .detail-item i {
+            font-size: 0.9rem;
+        }
+
+        .internship-description {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .apply-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .apply-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: darkblue;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+            }
+            
+            .filters select {
+                width: 100%;
+            }
+            
+            .internship-card {
+                flex: 0 0 85%;
+            }
+
+        
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">RWANDA INTERNSHIP LINKAGE SYSYTEM</h1>
+            <nav>
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="loginin.html" class="employer-btn">For Employers</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>The Linkage System Launch to Your Career with Top Internships</h2>
+            <p>Gain real-world experience with opportunities tailored for students and graduates.</p>
+            <a href="#internships" class="btn-primary">Browse Internships</a>
+        </div>
+    </section>
+
+    <section id="internships" class="internship-listings">
+        <div class="container">
+            <h3>Featured Internships</h3>
+            <div class="filters">
+                <select id="field-filter">
+                    <option value="all">All Fields</option>
+                    <option value="tech">Technology</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="finance">Finance</option>
+                    <option value="design">Design</option>
+                    <option value="healthcare">Healthcare</option>
+                </select>
+                <select id="location-filter">
+                    <option value="all">All Locations</option>
+                    <option value="Huye">Huye</option>
+                    <option value="kigali">Kigali</option>
+                    <option value="musanze">Musanze</option>
+                    <option value="Muhanga">Muhanga</option>
+                </select>
+            </div>
+            
+            <div class="internship-container" id="internship-container">
+                <!-- Internships will be loaded here via JS -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 InternshipCenter. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample internship data with images
+        const internships = [
+            {
+                id: 1,
+                title: "Web Developer Intern",
+                company: "Techs Ltd",
+                location: "Kigali",
+                duration: "3 months",
+                field: "tech",
+                description: "Build responsive websites using modern frameworks like React and Node.js. Perfect for CS students.",
+                remote: false,
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                logo: "https://logo.clearbit.com/techcrunch.com"
+            },
+            {
+                id: 2,
+                title: "Marketing Intern",
+                company: "Creel",
+                location: "Musanze",
+                duration: "4 months",
+                field: "marketing",
+                description: "Create social media campaigns and analyze digital marketing metrics. No experience required.",
+                remote: true,
+                image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                logo: "https://logo.clearbit.com/marketingprofs.com"
+            },
+            {
+                id: 3,
+                title: "Data Science Intern",
+                company: "DataFlow Inc.",
+                location: "kigali",
+                duration: "6 months",
+                field: "tech",
+                description: "Analyze datasets and build predictive models. Mentorship provided.",
+                remote: false,
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                logo: "https://logo.clearbit.com/ibm.com"
+            },
+            {
+                id: 4,
+                title: "Graphic Design Intern",
+                company: "Pixel Studios",
+                location: "kigali",
+                duration: "2 months",
+                field: "design",
+                description: "Create visuals for brands and assist in design projects. Portfolio required.",
+                remote: false,
+                image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                logo: "https://logo.clearbit.com/adobe.com"
+            },
+            {
+                id: 5,
+                title: "Finance Intern",
+                company: "CapitalTrust",
+                location: "Huye",
+                duration: "3 months",
+                field: "finance",
+                description: "Support financial analysis and audit processes. Business/Finance majors preferred.",
+                remote: false,
+                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                logo: "https://logo.clearbit.com/goldmansachs.com"
+            },
+            {
+                id: 6,
+                title: "Healthcare Intern",
+                company: "MedLife Group",
+                location: "Muhanga",
+                duration: "5 months",
+                field: "healthcare",
+                description: "Assist in medical research and administrative tasks. Open to pre-med students.",
+                remote: false,
+                image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                logo: "https://logo.clearbit.com/medlife.com"
+            }
+        ];
+
+        // DOM Elements
+        const internshipContainer = document.getElementById('internship-container');
+        const fieldFilter = document.getElementById('field-filter');
+        const locationFilter = document.getElementById('location-filter');
+
+        // Display internships
+        function displayInternships(internshipsToDisplay) {
+            internshipContainer.innerHTML = '';
+            
+            internshipsToDisplay.forEach(internship => {
+                const card = document.createElement('div');
+                card.className = 'internship-card';
+                card.innerHTML = `
+                    <div class="internship-img" style="background-image: url('${internship.image}')">
+                        <div class="company-logo">
+                            <img src="${internship.logo}" alt="${internship.company}">
+                        </div>
+                    </div>
+                    <div class="internship-content">
+                        <h4>${internship.title}</h4>
+                        <span class="company">${internship.company}</span>
+                        <div class="details">
+                            <span class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${internship.location}   
+                            </span>
+                            <span class="detail-item">
+                                <i class="far fa-clock"></i>
+                                ${internship.duration}
+                            </span>
+                            ${internship.remote ? '<span class="detail-item"><i class="fas fa-laptop-house"></i> Remote</span>' : ''}
+                        </div>
+                        <p class="internship-description">${internship.description}</p>
+                        <button class="apply-btn" data-id="${internship.id}">Apply Now</button>
+                    </div>
+                `;
+                internshipContainer.appendChild(card);
+            });
+            
+            // Add event listeners to apply buttons
+            document.querySelectorAll('.apply-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const internshipId = this.getAttribute('data-id');
+                    // Check if user is logged in (in a real app, you would check authentication)
+                    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                    
+                    if (isLoggedIn) {
+                        window.location.href = `details.html?id=${internshipId}`;
+                    } else {
+                        window.location.href = `login.html?redirect=apply.html?id=${internshipId}`;
+                    }
+                });
+            });
+        }
+
+        // Filter internships
+        function filterInternships() {
+            const fieldValue = fieldFilter.value;
+            const locationValue = locationFilter.value;
+            
+            let filtered = internships;
+            
+            if (fieldValue !== 'all') {
+                filtered = filtered.filter(internship => internship.field === fieldValue);
+            }
+            
+            if (locationValue !== 'all') {
+                if (locationValue === 'remote') {
+                    filtered = filtered.filter(internship => internship.remote);
+                } else {
+                    filtered = filtered.filter(internship => internship.location.toLowerCase() === locationValue.toLowerCase());
+                }
+            }
+            
+            displayInternships(filtered);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            displayInternships(internships);
+            
+            // Add event listeners to filters
+            fieldFilter.addEventListener('change', filterInternships);
+            locationFilter.addEventListener('change', filterInternships);
+            
+            // Check if there's a success message to show (from login/application)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                alert('Your application has been submitted successfully!');
+            }
+        
+		
+		});
+    </script>
+</body>
+</html>

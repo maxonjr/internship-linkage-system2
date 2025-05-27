@@ -1,0 +1,42 @@
+.profile-overview {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.my-applications {
+  margin: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.status.approved {
+  color: green;
+  font-weight: bold;
+}
+
+.status.pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.status.denied {
+  color: red;
+  font-weight: bold;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #1e293b;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background: #3b82f6;
+    }
+
+    /* Content */
+    .content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+      background: white;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="#" class="active" onclick="showSection('dashboard')">📊 Dashboard</a>
+    <a href="#" onclick="showSection('applications')">📁 Applications</a>
+    <a href="#" onclick="showSection('create')">📝 Create Internship</a>
+    <a href="#" onclick="showSection('notifications')">🔔 Notifications</a>
+  </div>
+
+  <div class="content">
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="section active">
+      <h1>Welcome, Admin</h1>
+      <p>This is your control panel. Use the sidebar to navigate between features.</p>
+    </div>
+
+    <!-- Applications Section -->
+    <div id="applications" class="section">
+      <h1>Review Applications</h1>
+      <p>All internship applications will be listed here with accept/deny options.</p>
+      <!-- You can reuse your card UI here -->
+    </div>
+
+    <!-- Create Internship Section -->
+    <div id="create" class="section">
+      <h1>Create a New Internship</h1>
+      <form onsubmit="event.preventDefault(); alert('Internship Created!');">
+        <input type="text" placeholder="Internship Title" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        <textarea placeholder="Description..." rows="5" style="width: 100%; padding: 10px;"></textarea>
+        <button type="submit" style="padding: 10px 20px; background: #22c55e; color: white; border: none; border-radius: 6px;">Create</button>
+      </form>
+    </div>
+
+    <!-- Notifications Section -->
+    <div id="notifications" class="section">
+      <h1>Notifications</h1>
+      <p>You will see new application alerts and updates here.</p>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      // Remove active from all sections and nav links
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+
+      // Add active to selected
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
