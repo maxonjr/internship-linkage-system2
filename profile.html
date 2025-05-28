@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Internship Center</title>
+    <style>
+        /* Reused Header/Footer Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Verdana', sans-serif;
+            font-style: italic;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            color: green;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        header {
+            background: darkblue;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        
+        /* Profile Page Specific Styles */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+        
+        .profile-card {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid #2563eb;
+        }
+        
+        .profile-card h3 {
+            margin-bottom: 5px;
+        }
+        
+        .profile-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            background: #e0e7ff;
+            color: #2563eb;
+        }
+        
+        .nav-menu i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .main-content {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .profile-header h2 {
+            color: #1e293b;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .profile-section {
+            margin-bottom: 30px;
+        }
+        
+        .profile-section h3 {
+            margin-bottom: 15px;
+            color: #1e293b;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .skill-tag {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-tag button {
+            background: none;
+            border: none;
+            color: #2563eb;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        
+        .add-skill {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .add-skill input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+        }
+        
+        .add-skill button {
+            padding: 8px 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .experience-item,
+        .education-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .experience-item h4,
+        .education-item h4 {
+            margin-bottom: 5px;
+            color: #1e293b;
+        }
+        
+        .experience-meta,
+        .education-meta {
+            display: flex;
+            gap: 15px;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .profile-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .resume-preview {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .resume-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: 2;
+            }
+            
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header (Logged-in Version) -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">InternshipCenter</a>
+                <div>
+                    <a href="profile.html" id="userProfileLink" style="margin-right: 15px; color: #2563eb; text-decoration: none; font-weight: 600;">
+                        <i class="fas fa-user-circle"></i> <span id="usernameDisplay"></span>
+                    </a>
+                    <a href="#" id="logoutBtn" class="btn" style="background: #f1f5f9; color: #64748b;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Profile Content -->
+    <main class="container">
+        <div class="dashboard">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <div class="profile-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-pic" id="userProfilePic">
+                    <h3 id="userFullName">John Doe</h3>
+                    <p id="userMajor">Computer Science Student</p>
+                    <p id="userUniversity">University of Rwanda</p>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="profile.html" class="active"><i class="fas fa-user"></i> My Profile</a></li>
+                    <li><a href="applications.html"><i class="fas fa-file-alt"></i> Applications</a></li>
+                    <li><a href="saved-internships.html"><i class="fas fa-bookmark"></i> Saved Internships</a></li>
+                    <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <div class="profile-header">
+                    <h2>My Profile</h2>
+                    <button class="btn">Edit Profile</button>
+                </div>
+                
+                <div class="profile-content">
+                    <!-- Personal Information Section -->
+                    <div class="profile-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" value="John Doe" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" value="john.doe@example.com" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" value="+250 78 123 4567" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" value="KN 123 St, Kigali, Rwanda" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" readonly>Computer Science student passionate about web development and artificial intelligence. Looking for an internship to apply my skills and gain real-world experience.</textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Education Section -->
+                    <div class="profile-section">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <h4>University of Rwanda</h4>
+                            <div class="education-meta">
+                                <span>Bachelor of Science in Computer Science</span>
+                                <span>2020 - 2024</span>
+                            </div>
+                            <p>Specializing in Software Engineering with a minor in Data Science. Current GPA: 3.8/4.0</p>
+                        </div>
+                        <div class="education-item">
+                            <h4>Green Hills Academy</h4>
+                            <div class="education-meta">
+                                <span>High School Diploma</span>
+                                <span>2014 - 2020</span>
+                            </div>
+                            <p>Mathematics and Physics track. Graduated with honors.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills Section -->
+                    <div class="profile-section">
+                        <h3>Skills</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">JavaScript <button><i class="fas fa-times"></i></button></span>
+                            <span class="skill-tag">React <button><i class="fas fa-times"></i></button></span>
+                            <span class="skill-tag">Python <button><i class="fas fa-times"></i></button></span>
+                            <span class="skill-tag">HTML/CSS <button><i class="fas fa-times"></i></button></span>
+                            <span class="skill-tag">Node.js <button><i class="fas fa-times"></i></button></span>
+                            <span class="skill-tag">SQL <button><i class="fas fa-times"></i></button></span>
+                        </div>
+                        <div class="add-skill">
+                            <input type="text" placeholder="Add a skill">
+                            <button><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Section -->
+                    <div class="profile-section">
+                        <h3>Experience</h3>
+                        <div class="experience-item">
+                            <h4>Web Developer Intern</h4>
+                            <div class="experience-meta">
+                                <span>Tech Solutions Ltd</span>
+                                <span>Jun 2022 - Aug 2022</span>
+                            </div>
+                            <ul>
+                                <li>Developed responsive web applications using React.js</li>
+                                <li>Collaborated with design team to implement UI/UX improvements</li>
+                                <li>Participated in agile development process</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h4>Freelance Web Developer</h4>
+                            <div class="experience-meta">
+                                <span>Self-employed</span>
+                                <span>Jan 2021 - Present</span>
+                            </div>
+                            <ul>
+                                <li>Built websites for small businesses and startups</li>
+                                <li>Provided technical consulting services</li>
+                                <li>Managed client relationships and project timelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Resume Section -->
+                    <div class="profile-section">
+                        <h3>Resume</h3>
+                        <div class="resume-preview">
+                            <p><i class="fas fa-file-pdf"></i> John_Doe_Resume.pdf</p>
+                            <p>Uploaded: May 15, 2023</p>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="btn">Download</button>
+                            <button class="btn btn-secondary">Upload New</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Projects Section -->
+                    <div class="profile-section">
+                        <h3>Projects</h3>
+                        <div class="experience-item">
+                            <h4>E-commerce Website</h4>
+                            <div class="experience-meta">
+                                <span>Personal Project</span>
+                                <span>Jan 2023 - Mar 2023</span>
+                            </div>
+                            <p>Built a full-stack e-commerce platform with React, Node.js, and MongoDB. Implemented user authentication, product catalog, and payment processing.</p>
+                        </div>
+                        <div class="experience-item">
+                            <h4>Student Management System</h4>
+                            <div class="experience-meta">
+                                <span>University Project</span>
+                                <span>Sep 2022 - Dec 2022</span>
+                            </div>
+                            <p>Developed a system for tracking student performance using Python and Django. Included data visualization features for analytics.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-actions">
+                    <button class="btn btn-secondary">Cancel</button>
+                    <button class="btn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer (Same as Index) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>InternshipCenter</h3>
+                    <p>Connecting students with top companies to launch careers.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="all-internships.html">Internships</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>For Employers</h3>
+                    <ul>
+                        <li><a href="post-internship.html">Post Internship</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="employer-dashboard.html">Employer Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 InternshipCenter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Display logged in user's information
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const loggedIn = sessionStorage.getItem('loggedIn');
+            const username = sessionStorage.getItem('username') || 'User';
+            const email = sessionStorage.getItem('email') || '';
+            
+            if (loggedIn !== 'true') {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update all user information displays
+            document.getElementById('usernameDisplay').textContent = username;
+            document.getElementById('userFullName').textContent = username;
+            document.getElementById('email').value = email || 'john.doe@example.com';
+            
+            // Set profile picture based on username (demo purposes)
+            const profilePic = document.getElementById('userProfilePic');
+            const nameHash = username.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+            const gender = nameHash % 2 === 0 ? 'women' : 'men';
+            profilePic.src = `https://randomuser.me/api/portraits/${gender}/${nameHash % 100}.jpg`;
+            
+            // Demo user data based on username
+            if (username.toLowerCase().includes('john')) {
+                document.getElementById('userMajor').textContent = 'Computer Science Student';
+                document.getElementById('userUniversity').textContent = 'University of Rwanda';
+            } else if (username.toLowerCase().includes('mary')) {
+                document.getElementById('userMajor').textContent = 'Business Administration';
+                document.getElementById('userUniversity').textContent = 'Kigali Institute of Technology';
+            } else {
+                document.getElementById('userMajor').textContent = 'Engineering Student';
+                document.getElementById('userUniversity').textContent = 'African Leadership University';
+            }
+            
+            // Logout functionality
+            document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                sessionStorage.clear();
+                window.location.href = 'login.html';
+            });
+            
+            // Toggle edit mode
+            const editBtn = document.querySelector('.profile-header .btn');
+            const saveBtn = document.querySelector('.profile-actions .btn:not(.btn-secondary)');
+            const cancelBtn = document.querySelector('.profile-actions .btn-secondary');
+            const inputs = document.querySelectorAll('.main-content input, .main-content textarea');
+            
+            editBtn.addEventListener('click', function() {
+                // Toggle readonly attribute on all inputs
+                inputs.forEach(input => {
+                    input.readOnly = !input.readOnly;
+                });
+                
+                // Toggle edit buttons visibility
+                document.querySelector('.profile-header .btn').style.display = 'none';
+                document.querySelector('.profile-actions').style.display = 'flex';
+            });
+            
+            cancelBtn.addEventListener('click', function() {
+                // Reset all inputs to their original values
+                // In a real app, you would want to store original values
+                inputs.forEach(input => {
+                    input.readOnly = true;
+                });
+                
+                // Toggle buttons back
+                document.querySelector('.profile-header .btn').style.display = 'block';
+                document.querySelector('.profile-actions').style.display = 'none';
+            });
+            
+            // Initially hide the save/cancel buttons
+            document.querySelector('.profile-actions').style.display = 'none';
+            
+            // Skill management
+            const skillInput = document.querySelector('.add-skill input');
+            const addSkillBtn = document.querySelector('.add-skill button');
+            const skillsList = document.querySelector('.skills-list');
+            
+            addSkillBtn.addEventListener('click', function() {
+                if (skillInput.value.trim()) {
+                    const skillTag = document.createElement('span');
+                    skillTag.className = 'skill-tag';
+                    skillTag.innerHTML = `${skillInput.value.trim()} <button><i class="fas fa-times"></i></button>`;
+                    
+                    // Add remove functionality
+                    skillTag.querySelector('button').addEventListener('click', function() {
+                        skillTag.remove();
+                    });
+                    
+                    skillsList.appendChild(skillTag);
+                    skillInput.value = '';
+                }
+            });
+            
+            // Add remove functionality to existing skills
+            document.querySelectorAll('.skill-tag button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    btn.parentElement.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
